@@ -1,0 +1,44 @@
+# Use Bonjour/Avahi to discover Core URL. If yes, CORE_URL value is ignored
+USE_AUTODISCOVER = True
+
+# List of CoreCluster Cluster Interface addresses. This could be overriden by USE_AUTODISCOVER variable. Then Avahi is
+# used to obtain CI address
+CORE_URL = ["http://localhost:8001/", ]
+
+# Interfaces, which are used to transit traffic between virtual machines.
+# You should specify at lease one. It is possible to use wildcard (*) to select
+# many interfaces matching it.
+INTERFACES = [
+    {'iface':   'eth*',
+     'cost':    100},
+    {'iface':   'enp*',
+     'cost':    100},
+    {'iface':   'ens*',
+     'cost':    100},
+    {'iface':   'wl*',
+     'cost':    1000},
+    {'iface':   'ib*',
+     'cost':    10}
+]
+
+# Interface, which should be used to handle isolated traffic with VXLAN driver. You can bond interfaces to
+# make redundant
+VXLAN_INTERFACE='eth0'
+
+# Multicast address used to make vxlan tunnels
+VXLAN_MULTICAST='239.0.0.1'
+
+
+QUAGGA_PASSWORD = "RANDOM_QUAGGA_PASSWORD"
+
+# Token which authorises all route updates in network by OSPF. This is generated automaticly during
+# CoreCluster installation. If changed, restart all network services on nodes and core (corecluster
+# and corenode) to keep networking working. Update ONLY at CoreCluster CI
+OSPF_TOKEN = 'OSPF_RANDOM_TOKEN'
+
+# The maximum length of network interface name. Used to generate redirection
+# interfaces and vpn tunnels. Don't change if any redirection or vpn is active!
+IFACE_NAME_LENGTH = 15
+
+# Change it to preserve Quagga/OSPF/Daemons files backups.
+CREATE_CONFIG_BACKUPS = False

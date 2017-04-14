@@ -1,0 +1,14 @@
+Source: corenetwork
+Section: contrib
+Priority: extra
+Maintainer: Marta Nabozny <martastrzet@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: http://cloudover.org/corecluster/
+
+Package: corenetwork
+Architecture: all
+Depends: avahi-daemon, avahi-discover, avahi-utils, corosync, libvirt-bin, nfs-common, ntpdate, openssh-server, python-dev, python-libvirt, python-setuptools, python-pip, quagga, qemu-utils, sudo
+Conflicts: overcluster-network
+Description: Networking package for CoreCluster
+ This package includes all drivers necessary to CoreCluster proper work

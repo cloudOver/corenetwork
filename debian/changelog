@@ -1,0 +1,97 @@
+corenetwork (17.03.05) stable; urgency=low
+
+  * Enabled sudo for www-data user to enable nginx novnc/webproxy redirections
+  * Updated network configs for quagga
+  * Updated version notfications
+
+ -- Maciej Nabozny <maciej.nabozny@cloudover.io> 06 Mar 2017 10:00:00 +0200
+
+
+corenetwork (17.01.01) stable; urgency=low
+
+  * Log watch and fixed hooks
+
+ -- Maciej Nabozny <maciej.nabozny@cloudover.io> 01 Jan 2017 10:00:00 +0200
+
+
+corenetwork (16.12.13) stable; urgency=low
+
+  * Sheepdog drivers moved to separate repository
+  * Added dependency python-setuptools
+  * Fixed corosync config
+  * SSH driver for ssh storage backend
+  * CLI shows blockers for task info cmd
+  * Updated corosync driver
+  * Dumping logs into a text file once a day (check app.py for hook configuration)
+  * Logs have colors
+
+ -- Maciej Nabozny <maciej.nabozny@cloudover.io> 23 Dec 2016 10:00:00 +0200
+
+
+corenetwork (16.09.22) stable; urgency=low
+
+  * Support for websocket proxy
+  * Fixed import error
+  * New logger
+  * Log filtering command line tool
+
+ -- Marta Nabozny <marta.nabozny@cloudover.io> 12 Sep 2016 10:00:00 +0200
+
+
+corenetwork (16.06.06) stable; urgency=low
+
+  * Config api
+  * Moved OSPF_TOKEN from corecluster's config to corenetwork config
+  * Fixed creating new config file
+
+ -- Marta Nabozny <marta.nabozny@cloudover.io> 13 Jun 2016 10:00:00 +0200
+
+
+corenetwork (16.04.02) stable; urgency=low
+
+  * Updated prepare hook for vm  
+
+ -- Marta Nabozny <marta.nabozny@cloudover.io> 08 Apr 2016 10:00:00 +0200
+
+
+corenetwork (16.03.10) stable; urgency=low
+
+  * sudo for brctl command
+  * Updated netns_add and call functions
+
+ -- Marta Nabozny <marta.nabozny@cloudover.io> 31 Mar 2016 10:00:00 +0200
+
+
+corenetwork (16.03.08) stable; urgency=low
+
+  * _call method moved to common corenetwork.utils.system module
+  * Support for network namespaces
+  * Moved render function from corecluster to corenetwork
+  * Changed build procedure for debian package
+  * Agent check method in CLI - check if agents are still alive
+  * Cleanup for agent and vm tables - cleanup action in cli removes closed vms or agents in done state.
+  * vm check option for cli to restore VM from failed state
+
+ -- Marta Nabozny <marta.nabozny@cloudover.io> 10 Mar 2016 10:00:00 +0200
+
+
+corenetwork (16.01.02) unstable; urgency=low
+
+  * Refactored hook mechanisms. Hooks are common for nodes and agents.
+
+ -- Marta Nabozny <martastrzet@gmail.com> 20 Jan 2016 10:00:00 +0200
+
+
+corenetwork (16.01.01) stable; urgency=low
+
+  * Sudo for qemu-img command
+
+ -- Marta Nabozny <martastrzet@gmail.com> 01 Jan 2016 10:00:00 +0200
+
+
+corenetwork (15.12.23) stable; urgency=low
+
+  * Egg based package
+  * New hook subsystem based on pipelines
+
+ -- Marta Nabozny <martastrzet@gmail.com> 02 Dec 2015 10:00:00 +0200

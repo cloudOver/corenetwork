@@ -1,0 +1,9 @@
+cloudover ALL=NOPASSWD: /usr/sbin/service
+cloudover ALL=NOPASSWD: /sbin/iptables
+cloudover ALL=NOPASSWD: /sbin/ip
+cloudover ALL=NOPASSWD: /sbin/brctl
+cloudover ALL=NOPASSWD: /usr/bin/tee
+cloudover ALL=NOPASSWD: /usr/bin/wakeonlan
+cloudover ALL=NOPASSWD: /usr/sbin/sheepfs
+cloudover ALL=NOPASSWD: /usr/bin/qemu-img
+www-data ALL=NOPASSWD: /usr/sbin/cc-manage
