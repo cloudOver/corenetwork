@@ -1,5 +1,6 @@
-corenetwork (17.04.01) stable; urgency=low
+corenetwork (17.04.02) stable; urgency=low
 
+  * Proxy support
   * Enabled sudo for www-data user to enable nginx novnc/webproxy redirections
   * Updated network configs for quagga
   * Updated version notfications

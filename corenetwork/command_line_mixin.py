@@ -89,6 +89,7 @@ class CommandLineMixin():
 
     def info_vm(self, action, id=None):
         from corecluster.models.core.vm import VM
+        from corecluster.models.core.lease import Lease
         from corecluster.cache.task import Task
         if action == 'list':
             print "ID\t\t\t\t\tUser\t\t\t\t\tNode\tState"
@@ -135,13 +136,13 @@ class CommandLineMixin():
             vm = VM.objects.get(pk=id)
             print str(vm.node.address) + ':' + str(vm.vnc_port)
 
-        elif action == 'websocket':
-            vm = VM.objects.get(pk=id)
+        elif action == 'proxy':
+            vm = Lease.objects.get(pk=id)
             lease = vm.lease_set.filter(mode='routed').first()
-            if lease == None:
+            if lease == None or not lease.proxy_enabled:
                 print ''
             else:
-                print str(lease.vm_address) + ':' + str(vm.websocket_port)
+                print str(lease.vm_address) + ':' + str(lease.proxy_port)
 
         elif action == 'webvnc':
             vm = VM.objects.get(pk=id)
