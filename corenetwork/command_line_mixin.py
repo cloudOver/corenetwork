@@ -137,12 +137,11 @@ class CommandLineMixin():
             print str(vm.node.address) + ':' + str(vm.vnc_port)
 
         elif action == 'proxy':
-            vm = Lease.objects.get(pk=id)
-            lease = vm.lease_set.filter(mode='routed').first()
-            if lease == None or not lease.proxy_enabled:
+            lease = Lease.objects.get(pk=id)
+            if lease == None or not lease.proxy_enabled or lease.subnet.network_pool.mode != 'routed':
                 print ''
             else:
-                print str(lease.vm_address) + ':' + str(lease.proxy_port)
+                sys.stdout.write('http://' + str(lease.vm_address) + ':' + str(lease.proxy_port) + '/')
 
         elif action == 'webvnc':
             vm = VM.objects.get(pk=id)
