@@ -60,6 +60,15 @@ class CommandLineMixin():
             print "Enabling node %s" % node.address
             node.start()
 
+        elif action == 'info':
+            node = Node.objects.get(pk=id)
+            for vm in node.vm_set.all():
+                print "vm %s in state %s" % (vm.id, vm.state)
+                for lease in vm.lease_set.all():
+                    print "    lease %s mode %s libvirt %s ip %s" % (lease.id, lease.subnet.network_pool.mode, lease.vm_ifname, lease.vm_address)
+                for image in vm.image_set.all():
+                    print "    image %s dev %s" % (image.id, image.disk_dev)
+
         elif action == 'suspend':
             node = Node.objects.get(pk=id)
 
@@ -84,7 +93,7 @@ class CommandLineMixin():
 
         else:
             print "node [list]"
-            print "node [enable|disable|suspend|wakeup] [id]"
+            print "node [info|enable|disable|suspend|wakeup] [id]"
 
 
     def info_vm(self, action, id=None):
@@ -95,6 +104,16 @@ class CommandLineMixin():
             print "ID\t\t\t\t\tUser\t\t\t\t\tNode\tState"
             for vm in VM.objects.all():
                 print "%s\t%s\t%s\t%s" % (vm.id, vm.user.id, vm.node.address, vm.state)
+
+        elif action == 'info':
+            vm = VM.objects.get(pk=id)
+            print "state %s" % vm.state
+            print "template %s" % vm.template.name
+            print "base_image %s" % (str(vm.base_image))
+            for lease in vm.lease_set.all():
+                print "lease %s mode %s libvirt %s ip %s" % (lease.id, lease.subnet.network_pool.mode, lease.vm_ifname, lease.vm_address)
+            for image in vm.image_set.all():
+                print "image %s dev %s" % (image.id, image.disk_dev)
 
         elif action == 'erase':
             vm = VM.objects.get(pk=id)
@@ -152,7 +171,7 @@ class CommandLineMixin():
 
         else:
             print "vm [list|cleanup]"
-            print "vm [erase|check|save] [id]"
+            print "vm [info|erase|check|save] [id]"
 
 
     def _print_blockers(self, task, indent=0):

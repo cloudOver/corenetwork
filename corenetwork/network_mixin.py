@@ -146,3 +146,6 @@ class NetworkMixin():
                 log(msg='Latest version of CoreCluster is %s' % str(info['latest']), tags=('system', 'info'))
         except:
             pass
+
+    def _get_wakeonlan_mac(self):
+        return ''

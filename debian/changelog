@@ -1,3 +1,10 @@
+corenetwork (17.06.01) stable; urgency=low
+
+  * Wakeonlan method and registration
+
+ -- Maciej Nabozny <maciej.nabozny@cloudover.io> 17 Jun 2017 10:00:00 +0200
+
+
 corenetwork (17.04.03) stable; urgency=low
 
   * Proxy support

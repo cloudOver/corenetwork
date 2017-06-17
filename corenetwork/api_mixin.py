@@ -60,7 +60,8 @@ class ApiMixin():
                                                     'cpu_total': config.get('node', 'CPU'),
                                                     'memory_total': config.get('node', 'MEMORY'),
                                                     'hdd_total': config.get('node', 'HDD'),
-                                                    'username': config.get('node', 'USERNAME')})
+                                                    'username': config.get('node', 'USERNAME'),
+                                                    'mac': self._get_wakeonlan_mac()})
             except Exception as e:
                 if str(e) != 'node_registered':
                     raise e
