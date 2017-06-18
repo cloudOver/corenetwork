@@ -55,6 +55,8 @@ class CommandLineBase:
         if action in self.actions.keys():
             a = getattr(self, action)
             a(*params)
+        else:
+            print('Command not found')
 
     def help(self, command=None):
         if command is None:
