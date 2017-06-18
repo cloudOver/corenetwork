@@ -468,7 +468,7 @@ class CommandLineMixin():
 
         for hook in hooks:
             if hasattr(hook, 'cron'):
-                hook.cron()
+                hook.cron(action)
 
 
     def info_cloudinit(self, vm_address):
