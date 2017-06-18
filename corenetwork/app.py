@@ -10,4 +10,8 @@ MODULE = {
     'hooks': {
         'cron.daily': ['corenetwork.hooks.logs_dump',],
     },
+    'cli': {
+        'cron': 'corenetwork.cli.cron',
+        'log': 'corenetwork.cli.log',
+    }
 }
