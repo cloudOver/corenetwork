@@ -9,7 +9,7 @@ import os
 setup(
   name = 'corenetwork',
   packages = find_packages(exclude=['config']),
-  version = '17.06.01',
+  version = '17.06.02',
   description = 'CoreCluster common networking package',
   author = 'Marta Nabozny',
   author_email = 'martastrzet@gmail.com',

@@ -59,7 +59,7 @@ class HookInterface(object):
         """
         Override this method in hook's code to perform periodic actions on object (e.g. vm, image or network) in periodic
         time. This may be used to monitor vm's state.
-        :param interval The frequency of hook calling. You could
+        :param interval The frequency of hook calling
         """
         pass
 
