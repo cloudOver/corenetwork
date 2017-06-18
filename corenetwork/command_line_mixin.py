@@ -56,4 +56,9 @@ class CommandLineMixin():
 
     def cli_handle(self, params):
         cmds = self._get_commands()
-        cmds[params[0]](*params[1:])
+        if params[1] not in cmds and params[1] != 'help':
+            print('Command not supported')
+        elif params[1] == 'help':
+            cmds[params[2]].help()
+        else:
+            cmds[params[1]].call(params[2], params[3:])
