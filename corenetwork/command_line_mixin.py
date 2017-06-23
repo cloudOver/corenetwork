@@ -58,7 +58,13 @@ class CommandLineMixin():
         cmds = self._get_commands()
         if params[1] not in cmds and params[1] != 'help':
             print('Command not supported')
-        elif params[1] == 'help':
+        elif params[1] == 'help' and len(params) > 2:
             cmds[params[2]].help()
+        elif params[1] == 'help':
+            print('Available commands:')
+            for cmd in cmds.keys():
+                print('\t- ' + cmd)
+
+            print('Type ' + params[0] + ' help [command] for details.')
         else:
             cmds[params[1]].call(params[2], params[3:])

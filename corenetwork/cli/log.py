@@ -74,15 +74,15 @@ class Cmd(CommandLineBase):
         for msg in message_set.order_by('date').all():
             print(str(msg))
 
-    def _query(self, interval, tags):
+    def _query(self, tags):
         if tags != '' and tags is not None:
-            tag_list = Tag.objects.filter(name__in=id.split(',')).all()
+            tag_list = Tag.objects.filter(name__in=tags.split(',')).all()
             if len(tag_list) == 0:
                 print('Tag not found')
                 return
 
-            q = tags[0].message_set.all()
-            for tag in tags[1:]:
+            q = tag_list[0].message_set.all()
+            for tag in tag_list[1:]:
                 q = q & tag.message_set.all()
         else:
             q = Message.objects

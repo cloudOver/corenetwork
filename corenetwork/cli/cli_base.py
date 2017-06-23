@@ -61,18 +61,18 @@ class CommandLineBase:
     def help(self, command=None):
         if command is None:
             for action in self.actions:
-                print(action + ':')
                 if 'help' in self.actions[action]:
-                    print(self.actions[action]['help'])
+                    print('cc-manage ' + action + ': ' + self.actions[action]['help'])
                 else:
-                    print('No help available')
+                    print('cc-manage ' + action + ': ' + 'No help available')
 
                 if 'params' in self.actions[action]:
+                    print('Parameters:')
                     for param in self.actions[action]['params'].keys():
                         if 'help' in self.actions[action]['params'][param]:
-                            print(' - ' + param + ': ' + self.actions[action]['params'][param]['help'])
+                            print('\t- ' + param + '\t' + self.actions[action]['params'][param]['help'])
                         else:
-                            print(' - ' + param)
+                            print('\t- ' + param)
                 print('')
 
         elif command in self.actions.keys():
@@ -81,10 +81,10 @@ class CommandLineBase:
             else:
                 print('No help available')
 
-            if 'params' in self.actions[action]:
-                for param in self.actions[action]['params'].keys():
-                    if 'help' in self.actions[action]['params'][param]:
-                        print(' - ' + param + ': ' + self.actions[action]['params'][param]['help'])
+            if 'params' in self.actions[command]:
+                for param in self.actions[command]['params'].keys():
+                    if 'help' in self.actions[command]['params'][param]:
+                        print(' - ' + param + ': ' + self.actions[command]['params'][param]['help'])
                     else:
                         print(' - ' + param)
             print('')
