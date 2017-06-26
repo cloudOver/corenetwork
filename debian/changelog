@@ -1,3 +1,10 @@
+corenetwork (17.06.08) stable; urgency=low
+
+  * Fixed log watch command
+
+ -- Maciej Nabozny <maciej.nabozny@cloudover.io> 26 Jun 2017 10:00:00 +0200
+
+
 corenetwork (17.06.07) stable; urgency=low
 
   * Fixed cc-manage help
