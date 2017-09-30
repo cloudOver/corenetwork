@@ -109,7 +109,7 @@ class Cmd(CommandLineBase):
         self._print(q)
 
     def watch(self, tags=''):
-        last_d = None
+        last_id = None
         while True:
             q = self._query(tags)
             q = q.order_by('date')
