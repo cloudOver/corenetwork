@@ -8,7 +8,7 @@ Homepage: http://cloudover.org/corecluster/
 
 Package: corenetwork
 Architecture: all
-Depends: avahi-daemon, avahi-discover, avahi-utils, corosync, libvirt-bin, nfs-common, ntpdate, openssh-server, python-dev, python-libvirt, python-setuptools, python-pip, quagga, qemu-utils, sudo
+Depends: avahi-daemon, avahi-discover, avahi-utils, corosync, libvirt-bin | libvirt-libvirt-daemon-system, libvirt-bin | libvirt-clients, nfs-common, ntpdate, openssh-server, python-dev, python-libvirt, python-setuptools, python-pip, quagga, qemu-utils, sudo
 Conflicts: overcluster-network
 Description: Networking package for CoreCluster
  This package includes all drivers necessary to CoreCluster proper work

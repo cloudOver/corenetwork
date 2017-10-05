@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from corenetwork.cli.cli_base import CommandLineBase
 from corenetwork.hook_interface import HookInterface
 from corenetwork.os_mixin import OsMixin
-
+from corenetwork.utils.logger import log
 
 class Cmd(CommandLineBase):
     actions = {
@@ -70,7 +70,10 @@ class Cmd(CommandLineBase):
 
         for hook in hooks:
             if hasattr(hook, 'cron'):
-                hook.cron(interval)
+                try:
+                    hook.cron(interval)
+                except Exception as e:
+                    log(msg="Failed to launch hook: " + str(e), exception=e, loglevel='error', tags=('hook', ))
 
     def minute(self):
         self.execute('minute')
