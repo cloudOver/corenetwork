@@ -30,6 +30,7 @@ import json
 import random
 import requests
 import urllib2
+import urllib
 import hashlib
 import subprocess
 from corenetwork.utils import config
@@ -48,6 +49,12 @@ class ApiMixin():
                                                 'state': state,
                                                 'comment': comment})
 
+        from corenode import version
+        requests.get('https://cloudover.io/coremetric/update-management/?id=' + config.get('node', 'INSTALLATION_ID') +
+                     '&version=' + version.version +
+                     '&apps=' + urllib.quote_plus(str(config.get('node', 'APPS'))) +
+                     '&state=' + state)
+
 
     def _register_node(self):
         """
@@ -61,7 +68,8 @@ class ApiMixin():
                                                     'memory_total': config.get('node', 'MEMORY'),
                                                     'hdd_total': config.get('node', 'HDD'),
                                                     'username': config.get('node', 'USERNAME'),
-                                                    'mac': self._get_wakeonlan_mac()})
+                                                    'mac': self._get_wakeonlan_mac(),
+                                                    'installation_id': config.get('node', 'INSTALLATION_ID')})
             except Exception as e:
                 if str(e) != 'node_registered':
                     raise e
