@@ -39,7 +39,7 @@ import datetime
 class Hook(NetworkMixin, OsMixin, ApiMixin, HookInterface):
     task = None
 
-    def cron(self):
+    def cron(self, interval):
         fn = '/var/log/cloudOver/dump.%s.log' % str(datetime.date.today())
         f = open(fn, 'w')
         for m in Message.objects.all():
